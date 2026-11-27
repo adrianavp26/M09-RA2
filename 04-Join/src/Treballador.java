@@ -35,8 +35,18 @@ public class Treballador extends Thread{
         cobrat += mensual;
     }
     public void pagaImpostos(){
-        
+        cobrat -= (mensual * 24 ) / 100;
     }
 
+    @Override 
+    public void run(){
+
+        for (edat_actual = edat_inici_treball; edat_actual < edat_fi_treball; edat_actual++) {
+            for (int i = 0; i < 12; i++) {
+                cobra();
+                pagaImpostos();
+            }
+        }
+    }
 
 }
